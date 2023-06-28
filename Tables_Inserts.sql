@@ -391,14 +391,14 @@ select * from contactos;
 
 INSERT INTO polizas VALUES (1, 'Poliza de Vida', 'Vida', 10000, '2023-01-01', '2024-01-01', 500, 1, 5);
 INSERT INTO polizas VALUES (2, 'Poliza de Vida', 'Vida', 50000, '2023-02-01', '2024-02-01', 1000, 2, 3);
-INSERT INTO polizas VALUES (3, 'Poliza de Vida', 'Vida', 20000, '2023-03-01', '2024-03-01', 800, 3, 9);
-INSERT INTO polizas VALUES (4, 'Poliza de Vida', 'Vida', 30000, '2023-04-01', '2024-04-01', 600, 4, 6);
-INSERT INTO polizas VALUES (5, 'Poliza de Vida', 'Vida', 10000, '2023-05-01', '2024-05-01', 500, 5, 10);
+INSERT INTO polizas VALUES (3, 'Poliza contra accidentes', 'Seguridad', 20000, '2023-03-01', '2024-03-01', 800, 3, 9);
+INSERT INTO polizas VALUES (4, 'Poliza contra robos', 'Seguridad', 30000, '2023-04-01', '2024-04-01', 600, 4, 6);
+INSERT INTO polizas VALUES (5, 'Poliza de salud', 'Salud', 10000, '2023-05-01', '2024-05-01', 500, 5, 10);
 INSERT INTO polizas VALUES (6, 'Poliza de Vida', 'Vida', 50000, '2023-06-01', '2024-06-01', 1000, 6, 2);
 INSERT INTO polizas VALUES (7, 'Poliza de Vida', 'Vida', 50000, '2023-07-01', '2024-07-01', 1000, 7, 7);
-INSERT INTO polizas VALUES (8, 'Poliza de Vida', 'Vida', 10000, '2023-08-01', '2024-08-01', 500, 8, 4);
+INSERT INTO polizas VALUES (8, 'Poliza contra accidentes', 'Seguridad', 10000, '2023-08-01', '2024-08-01', 500, 8, 4);
 INSERT INTO polizas VALUES (9, 'Poliza de Vida', 'Vida', 20000, '2023-09-01', '2024-09-01', 800, 9, 8);
-INSERT INTO polizas VALUES (10, 'Poliza de Vida', 'Vida', 50000, '2023-10-01', '2024-10-01', 1000, 10, 1);
+INSERT INTO polizas VALUES (10, 'Poliza contra robos', 'Seguridad', 50000, '2023-10-01', '2024-10-01', 1000, 10, 1);
 
 select * from polizas;
 
