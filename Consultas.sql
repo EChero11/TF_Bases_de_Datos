@@ -193,7 +193,48 @@ go;
 -----------------------------------------------------------------------------------------
 --Josue
 -----------------------------------------------------------------------------------------
+/*Funcion que obtiene los contactos (nombre, apellido, teléfono y correo)
+  de los agentes que trabajan en una sucursal mediante el ingreso del codigo*/
+create function f_agent_by_branch(
+    @codigo_sucursal int
+)
+returns table
+return
+    select c.nombre, c.apellido, c.telefono, c.correo
+    from contactos as c
+        join agentes as a on c.agentes_codigo = a.codigo
+    where a.sucursales_codigo = @codigo_sucursal;
 
+select * from dbo.f_agent_by_branch(2)
+
+
+/*Funcion que obtenga los nombres y apellidos de los asegurados
+  cuyo monto de cobertura sea mayor a 10000 y pertenezca a una determinada poliza*/
+
+create function f_asegurados_by_poliza(
+    @TipoPoliza varchar(100)
+)
+returns table
+return
+    select a.nombre, a.apellido
+    from asegurados as a
+        join polizas as  p on a.codigo = p.asegurados_codigo
+    where p.tipo_poliza = @TipoPoliza and p.monto_Seguro > 10000;
+
+select * from dbo.f_asegurados_by_poliza('Vida')
+
+
+/*Funcion que obtenga el agente con la mayor cantidad de polizas vendidas*/
+
+create function f_agente_by_mayor_cantidad_ventas()
+returns table
+return
+SELECT a.codigo, count(*) as numero_polizas_vendidas
+from polizas as p
+    join agentes as a on p.agentes_codigo = a.codigo
+GROUP BY a.codigo
+
+select * from dbo.f_agente_by_mayor_cantidad_ventas()
 -----------------------------------------------------------------------------------------
 --Abraham
 -----------------------------------------------------------------------------------------
