@@ -238,3 +238,17 @@ select * from dbo.f_agente_by_mayor_cantidad_ventas()
 -----------------------------------------------------------------------------------------
 --Abraham
 -----------------------------------------------------------------------------------------
+-- funcion que retorne los nombres de los asegurados mediante el tipo de resultado
+
+create function f_nombre_asegurado_por_tipo_asegurado(
+	@resultado varchar(10)
+) returns table
+return
+	select nombre, resultado
+	from asegurado as a
+		join hisotriales_medicos as hm on a.codigo = hm.resultado
+	where historiales_medico=@historiales_medicos
+go;
+select*from dbo.f_nombre_asegurado_por_tipo_resultado('Estable')
+
+
