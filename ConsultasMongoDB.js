@@ -51,7 +51,28 @@ db.asegurados.find({
 /*======================================================================================*/
 //Josué
 /*======================================================================================*/
+//Indicar la cantidad de polizas vendidas de un solo tipo por cada agente
+db.polizas.aggregate([
+  {
+    $match: { descripcion: 'Póliza de vida' }
+  },
+  {
+    $group: {
+        _id: '$id_agente',
+        quantity : {$count: {}}
+    }
+  }
+]);
 
+//Indicar la cantidad de polizas por cada tipo
+db.polizas.aggregate([
+  {
+    $group: {
+        _id: '$descripcion',
+        quantity: {$count:{}}
+    }
+  }
+]);
 /*======================================================================================*/
 
 /*======================================================================================*/
