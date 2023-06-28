@@ -77,3 +77,18 @@ db.polizas.aggregate([
 
 /*======================================================================================*/
 //Abraham
+//Mostrar los datos de las personas que tengan apellido "Torres" y esté "Estable"
+db.asegurados.find({
+    $and: [
+    {apellido: "Torres"},
+    {resultado:{$ne: "Estable"}}
+    ]
+})
+
+// Mostrar los datos de los asegurados que estén en trabajo "Asistente de Limpieza ó Vendedor Ambulante"
+db.asegurados.find({
+    $or: [
+    {"trabajo.cargo":"Asistente de limpieza"},
+    {"trabajo.cargo": "Vendedor ambulante" }
+    ]
+})
