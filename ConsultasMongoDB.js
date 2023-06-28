@@ -43,11 +43,59 @@ db.asegurados.find({
 /*======================================================================================*/
 //André
 /*======================================================================================*/
+//Obtener los asegurados que tienen como metodo de pago cualquiera menos Visa y su estado civil es soltero
+db.asegurados.find(
+    {
+    $and: [
+    {pago: {$ne: 'Visa'}},
+    {estado_civil: {$eq: 'soltero'}},
+    ]
+    }
+)
+
+//Obtener los agentes que tienen como sueldo mayor o igual a 5500 y una comision menor o igual a 120
+db.agentes.aggregate(
+    [
+        {
+        $match:{
+            sueldo: { $gte: 5500 },
+            comision: { $lte: 120}
+        }
+    }
+]
+)
 
 /*======================================================================================*/
 //Sebas
 /*======================================================================================*/
+// indicar la cantidad de asegurados que tienen alergias al polen
+db.historial_medico_asegurados.aggregate([
+    {
+        $match: { alergias: { $ne: "" } }
 
+    },
+    {
+        $group: {
+            _id: "$alergias",
+            quantity: {$count:{}}
+        }
+
+    }
+
+])
+
+
+// indicar la catindad total de asegurados en cada tipo de poliza
+db.polizas.aggregate([
+    {
+        $group: {
+            _id: "$descripcion",
+            quantity: {$count:{}}
+        }
+
+    }
+
+])
 /*======================================================================================*/
 //Josué
 /*======================================================================================*/
