@@ -251,4 +251,24 @@ return
 go;
 select*from dbo.f_nombre_asegurado_por_tipo_resultado('Estable')
 
+create view v_cantidad_asegurado_por_sucursal
+as
+select ubicacion, count(e.codigo) as quantity
+	from asegurados as a
+		join sucursal as s on a.asegurado_codigo= s.codigo
+group by ubicacion
 
+go;
+create function f_cantidad_asegurado_por_sucursal(
+	@ubicacion varchar(100)
+) returns int
+as
+begin
+	declare @quantity int
+	set @quantity = (select quantity
+	from  v_cantidad_asegurado_por_sucursal
+	where ubicacion =@ubicacion
+	return @quantity
+end
+go;
+select dbo._cantidad_asegurado_por_sucursal('Comas')
